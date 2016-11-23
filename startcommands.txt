@@ -1,0 +1,38 @@
+django-admin startproject nboston
+python manage.py runserver
+
+python manage.py startapp music
+
+Set up urls.py -- routing -- config for individual app
+Set up view.py -- index page -- with httprequest, response
+
+Create models, makemigrations, migrate
+
+---------------------------------------------------------------------
+# make migration
+Python manage.py makemigrations
+# to view
+#python manage.py sqlmigrate blog 0001
+
+python manage.py migrate
+
+
+# Create super user for admin
+Python manage.py createsuperuser
+
+
+----------------------------
+Add to DB from console
+python manage.py shell
+
+>>> from music.models import Album, Song
+>>> Album.objects.all()
+[]
+>>> a = Album(artist="Taylor Swift", album_title="Red", genre="Country", album_logo="https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/01/29/11/Taylor-Swift-revenge-nerds.jpg")
+>>> a.save()
+>>> a.artist
+'Taylor Swift'
+>>> a.album_title
+'Red'
+
+Album.objects.filter(id=1)
