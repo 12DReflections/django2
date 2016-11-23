@@ -1,2 +1,2 @@
-# django2
-A Python DJango Website
+# django1
+A Django Blog
