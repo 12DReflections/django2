@@ -58,3 +58,5 @@ python manage.py shell
 
 Album.objects.filter(id=1)
 Album.objects.filter(artist__startswith='Taylor')
+
+Album.objects.get(pk=1)
