@@ -1,10 +1,27 @@
 <img src="{{ album.album_logo }}">
 
 <h1>{{ album.album_title }}</h1>
-<h3>{{ album.artist}}</h3>
+<h3>{{ album.artist }}</h3>
 
-<ul>
+{% if error_message %}
+	<p><strong> {{ error_message }} </strong></p>
+{% endif %}
+
+<!-- List songs, if song is favorite, show a star image next to it
+	 Becomes < selected_song = album.song_set.get(pk=request.POST['song'] >
+	 in views.py
+
+ -->
+<form action="{% url 'favorite' album.id %}" method="post">
+	{% csrf_token %}
 	{% for song in album.song_set.all %}
-	<li>{{ song.song_title }} - {{ song.file_type }} </li>
+		<input type="radio" id= "song{{ forloop.counter }}" name="song" value="{{ song.id }}"/>
+		<label for="song{{ forloop.counter }}"> 
+			{{ song.song_title }}
+			{% if song.is_favorite %}
+				<img src="http://i.imgur.com/b9b13Rd.png" />
+			{% endif %}
+		</label><br>
 	{% endfor %}
-</ul>
+	<input type="submit" value="favorite" />
+</form>
