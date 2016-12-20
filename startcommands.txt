@@ -20,6 +20,11 @@ python manage.py migrate
 # Create super user for admin
 Python manage.py createsuperuser
 
+# Collect static files
+Put in settings.py:
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+Run: python manage.py collectstatic
 
 ----------------------------
 Add to DB from console
